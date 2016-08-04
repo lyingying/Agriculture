@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/analysisData.css">
+  <link rel="stylesheet" type="text/css" href="css/videoView.css">
   <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -43,20 +43,19 @@
           <ul class="nav nav-pill nav-justified">
             <li><a href="main.html">首 页</a></li>
             <li class="dropdown">
-              <a class="dropdown-toggle active" data-toggle="dropdown">日光温室<span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">日光温室<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="eMonitor.html">环境监控</a></li>
                 <li><a href="liveData.html">数据实况</a></li>
-                <li class="active"><a href="">数据分析</a></li>
+                <li><a href="analysisData.html">数据分析</a></li>
                 <li><a href="historicalData.html">历史数据</a></li>
-                <li><a href="#">农作物信息</a></li>
               </ul>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="">视频监控<span class="caret"></span></a>
+              <a class="dropdown-toggle active" data-toggle="dropdown" href="">视频监控<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="liveVideo.html">实时视频监控</a></li>
-                <li><a href="videoView.html">监控图像浏览</a></li>
+                <li class="active"><a href="">监控图像浏览</a></li>
                 <li><a href="videoControl.html">摄像监控控制</a></li>
               </ul>
             </li>
@@ -97,93 +96,61 @@
         <div class="main-inner">
         	<!-- main-title-start -->
         	<div class="main-title"><img src="./img/title.png">
-          	<span>数据分析</span>
+          	<span>图像浏览</span>
           	<div class="btns">
-            	<span class="btn">历史数据</span><i class="split"></i>
-            	<span class="btn active">数据分析</span><i class="split"></i>
-            	<span class="btn">数据实况</span>
+            	<span class="btn active">图像浏览</span><i class="split"></i>
+            	<span class="btn">云台控制</span><i class="split"></i>
+            	<span class="btn">视频浏览</span>
           	</div>
           </div>
           <!-- main-title-end -->
           <!-- operation-box-start -->
           <form action="" method="" class="operation-box">
             <div class="operation">
-            	<label>选择设备：</label>
+              <label>选择设备：</label>
               <select class="room-select">
-                <option>日光温室1</option><option>日光温室2</option><option>日光温室3</option>
-              </select>
-              <label>分析图：</label>
-              <select class="chart-select">
-                <option>折线图</option><option>柱状图</option><option>区域图</option>
+                <option>日光温室1 摄像机</option><option>日光温室2 摄像机</option><option>日光温室3 摄像机</option>
               </select>
               <label>时间：</label>
-              <input type="text" value="" class="input_date" data-date-format="yyyy-mm-dd" readonly> 至
+              <input type="text" value="" class="input_date" data-date-format="yyyy-mm-dd" readonly> - 
               <input type="text" value="" class="input_date" data-date-format="yyyy-mm-dd" readonly>
-              <label>分析类型：</label>
-              <select>
-                <option>小时平均</option><option>天平均</option>
-              </select>
               <div class="search-btn">查 询</div>
-            </div>
-            <div class="chexck">
-              <input type="checkbox" checked="checked" value="空气温度">
-              <label>空气温度</label>
-              <input type="checkbox" value="空气湿度">
-              <label>空气湿度</label>
-              <input type="checkbox" value="土壤含水量">
-              <label>土壤含水量</label>
-              <input type="checkbox" value="土壤温度">
-              <label>土壤温度</label>
-              <input type="checkbox" value="光照强度">
-              <label>光照强度</label>
-              <input type="checkbox" value="二氧化碳">
-              <label>二氧化碳</label>
             </div>
           </form>
           <!-- operation-box-end -->
-          <!-- chart-box-start -->
-          <div class="chart-box">
-            <div id="chart-content" class="chart-content"></div>
+          <!-- video-list-start -->
+          <div class="video-list-box">
+            <!-- pre-page-start -->
+            <div class="pre-page"></div>
+            <!-- pre-page-end -->
+            <div class="video-list">
+              <div class="video-box">
+                <div class="video">
+                  <video src="./The.Big.Bang.mp4" controls="controls"></video>
+                </div>
+                <div class="flag">日光温室1 摄像机</div>
+              </div>
+              <div class="video-box">
+                <div class="video">
+                  <video src="./The.Big.Bang.mp4" controls="controls"></video>
+                </div>
+                <div class="flag">日光温室2 摄像机</div>
+              </div>
+
+              <div class="video-list-footer">
+                <ul class="pagination">
+                  <li class="disabled"><a href="#">&laquo;</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li class="disabled"><a href="#">&raquo;</a></li>
+                </ul>
+                <span class="list-info">&nbsp;分页 1 / 1 总共: 2 条</span>
+              </div>
+            </div>
+            <!-- next-page-start -->
+            <div class="next-page"></div>
+            <!-- next-page-end -->
           </div>
-          <!-- chart-box-end -->
-          <!-- data-list-box-start -->
-          <div class="data-list-box">
-            <!-- title-start -->
-            <div class="data-list-title">
-              <table>
-                <tr><th>接收时间</th><th>空气温度</th><th>空气湿度</th><th>土壤含水量</th><th>土壤温度</th><th>光照强度</th><th>二氧化碳</th></tr>
-              </table>
-            </div>
-            <!-- title-end -->
-            <!-- content-start -->
-            <div class="list-content-box">
-              <table class="table table-striped">
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-              </table>
-            </div>
-            <!-- content-end -->
-            <div class="list-footer-box">
-              <ul class="pagination">
-                <li class="disabled"><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-              </ul>
-              <span class="list-info">显示条目 1 - 10 共 21 条</span>
-            </div>
-          </div>
-          <!-- data-list-box-end -->
+          <!-- video-list-end -->
         </div>
         <!-- main-inner-end -->
       </div>
@@ -196,13 +163,12 @@
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 	<script src="js/plugins.js"></script>
-  <script type="text/javascript" src="./js/echarts.min.js"></script>
   <script type="text/javascript" src="./js/bootstrap-datetimepicker.min.js"></script>
 	<script src="js/main.js"></script>
 	<script type="text/javascript" src="js/util.js"></script>
 	<script type="text/javascript" src="js/view.js"></script>
   
-  <script type="text/javascript" src="js/analysisData.js"></script>
+  <script type="text/javascript" src="js/videoView.js"></script>
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

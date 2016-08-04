@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/analysisData.css">
+  <link rel="stylesheet" type="text/css" href="css/fertilizerNotes.css">
   <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -43,13 +43,12 @@
           <ul class="nav nav-pill nav-justified">
             <li><a href="main.html">首 页</a></li>
             <li class="dropdown">
-              <a class="dropdown-toggle active" data-toggle="dropdown">日光温室<span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">日光温室<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="eMonitor.html">环境监控</a></li>
                 <li><a href="liveData.html">数据实况</a></li>
-                <li class="active"><a href="">数据分析</a></li>
+                <li><a href="analysisData.html">数据分析</a></li>
                 <li><a href="historicalData.html">历史数据</a></li>
-                <li><a href="#">农作物信息</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -61,11 +60,11 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="">农业生产过程记录<span class="caret"></span></a>
+              <a class="dropdown-toggle active" data-toggle="dropdown" href="">农业生产过程记录<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="farmingActivities.html">农事活动</a></li>
                 <li><a href="pesticideUsing.html">农药使用</a></li>
-                <li><a href="fertilizerNotes.html">施肥记录</a></li>
+                <li class="active"><a href="">施肥记录</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -97,11 +96,11 @@
         <div class="main-inner">
         	<!-- main-title-start -->
         	<div class="main-title"><img src="./img/title.png">
-          	<span>数据分析</span>
+          	<span>施肥记录</span>
           	<div class="btns">
-            	<span class="btn">历史数据</span><i class="split"></i>
-            	<span class="btn active">数据分析</span><i class="split"></i>
-            	<span class="btn">数据实况</span>
+            	<a href="farmingActivities.html"><span class="btn">农事活动</span></a><i class="split"></i>
+            	<a href="pesticideUsing.html"><span class="btn">农药使用</span></a><i class="split"></i>
+            	<a href=""><span class="btn active">施肥记录</span></a>
           	</div>
           </div>
           <!-- main-title-end -->
@@ -112,61 +111,69 @@
               <select class="room-select">
                 <option>日光温室1</option><option>日光温室2</option><option>日光温室3</option>
               </select>
-              <label>分析图：</label>
-              <select class="chart-select">
-                <option>折线图</option><option>柱状图</option><option>区域图</option>
-              </select>
               <label>时间：</label>
-              <input type="text" value="" class="input_date" data-date-format="yyyy-mm-dd" readonly> 至
+              <input type="text" value="" class="input_date" data-date-format="yyyy-mm-dd" readonly> - 
               <input type="text" value="" class="input_date" data-date-format="yyyy-mm-dd" readonly>
-              <label>分析类型：</label>
-              <select>
-                <option>小时平均</option><option>天平均</option>
-              </select>
               <div class="search-btn">查 询</div>
-            </div>
-            <div class="chexck">
-              <input type="checkbox" checked="checked" value="空气温度">
-              <label>空气温度</label>
-              <input type="checkbox" value="空气湿度">
-              <label>空气湿度</label>
-              <input type="checkbox" value="土壤含水量">
-              <label>土壤含水量</label>
-              <input type="checkbox" value="土壤温度">
-              <label>土壤温度</label>
-              <input type="checkbox" value="光照强度">
-              <label>光照强度</label>
-              <input type="checkbox" value="二氧化碳">
-              <label>二氧化碳</label>
+              <div class="download-btn">下 载</div>
             </div>
           </form>
           <!-- operation-box-end -->
-          <!-- chart-box-start -->
-          <div class="chart-box">
-            <div id="chart-content" class="chart-content"></div>
-          </div>
-          <!-- chart-box-end -->
           <!-- data-list-box-start -->
           <div class="data-list-box">
             <!-- title-start -->
             <div class="data-list-title">
               <table>
-                <tr><th>接收时间</th><th>空气温度</th><th>空气湿度</th><th>土壤含水量</th><th>土壤温度</th><th>光照强度</th><th>二氧化碳</th></tr>
+                <tr><th class="data-list-operate" colspan="10"><button><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;插&nbsp;入</button></th></tr>
+                <tr><th>温室</th><th>日期</th><th>肥料名称</th><th>登记证</th><th>使用范围</th><th>使用方法</th><th>使用量</th><th>使用次数</th><th>末次时间</th><th>&nbsp;</th></tr>
               </table>
             </div>
             <!-- title-end -->
             <!-- content-start -->
             <div class="list-content-box">
               <table class="table table-striped">
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
-                <tr><td>2016-05-09 00:00</td><td>18.65</td><td>65</td><td>12</td><td>20.3</td><td>0.7</td><td>558.5</td></tr>
+                <tr>
+                  <td>
+                    <select class="room-select">
+                      <option>日光温室1</option><option>日光温室2</option><option>日光温室3</option>
+                    </select>
+                  </td>
+                  <td><input type="text" value="" class="input_time" readonly></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text" value="" class="input_time" readonly></td>
+                  <td>
+                    <button class="light"><i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp;更新</button>
+                    <button><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;&nbsp;取消</button>
+                    <!-- <button><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;编辑</button>
+                    <button><i class="glyphicon glyphicon-remove"></i>&nbsp;&nbsp;删除</button> -->
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <select class="room-select">
+                      <option>日光温室1</option><option>日光温室2</option><option>日光温室3</option>
+                    </select>
+                  </td>
+                  <td><input type="text" value="" class="input_time" readonly></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text"></td>
+                  <td><input type="text" value="" class="input_time" readonly></td>
+                  <td>
+                    <button class="light"><i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp;更新</button>
+                    <button><i class="glyphicon glyphicon-ban-circle"></i>&nbsp;&nbsp;取消</button>
+                    <!-- <button><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;编辑</button>
+                    <button><i class="glyphicon glyphicon-remove"></i>&nbsp;&nbsp;删除</button> -->
+                  </td>
+                </tr>
               </table>
             </div>
             <!-- content-end -->
@@ -196,13 +203,12 @@
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 	<script src="js/plugins.js"></script>
-  <script type="text/javascript" src="./js/echarts.min.js"></script>
   <script type="text/javascript" src="./js/bootstrap-datetimepicker.min.js"></script>
 	<script src="js/main.js"></script>
 	<script type="text/javascript" src="js/util.js"></script>
 	<script type="text/javascript" src="js/view.js"></script>
   
-  <script type="text/javascript" src="js/analysisData.js"></script>
+  <script type="text/javascript" src="js/fertilizerNotes.js"></script>
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

@@ -30,15 +30,17 @@
                     </div>
                     <div class="login-box">
                         <div class="login-title">用户登录</div>
-                        <form>
+                        <form class="loginForm">
                             <div class="input-box">
                                 <div class="icon"><i class="glyphicon glyphicon-user"></i></div>
-                                <input type="text" name="userId" class="login-ipt" placeholder="用户ID">
+                                <input id="username" type="text" name="username" class="login-ipt" placeholder="用户名">
+                                <div class="tips"></div>
                             </div>
                             <div class="input-box">
                                 <div class="icon"><i class="glyphicon glyphicon-lock"></i></div>
-                                <input type="password" name="password" class="login-ipt" placeholder="密码">
-                                <a href="main.html"class="btn-login"><i class="glyphicon glyphicon-hand-right"></i></a>
+                                <input id="password" type="password" name="password" class="login-ipt" placeholder="密码">
+                                <a onclick="onLoginClick()" class="btn-login"><i class="glyphicon glyphicon-hand-right"></i></a>
+                                <div class="tips"></div>
                             </div>
                         </form>
                     </div>
@@ -49,9 +51,11 @@
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
+        <script src="./js/util.js"></script>
+        <script src="js/index.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

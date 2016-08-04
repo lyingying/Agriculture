@@ -82,3 +82,96 @@ DateTool = (function() {
 	}
 	return _DateTool;
 })();
+/**
+ * 验证信息工具
+ * @type {Object}
+ */
+proveTool = {
+	regExp:{
+		username : /^[a-zA-Z0-9_.]{6,13}$/,
+		password : /^[a-zA-Z0-9_.]{6,13}$/
+	},
+	tipMsg:{
+		username : "用户ID不合法！",
+		password : "密码不合法！"
+	}
+};
+/**
+ * [loadHtmlTool html加载工具]
+ * @type {Object}
+ */
+loadHtmlTool = {
+	htmlInfoMap:{
+		eMonitor:{'css':['css/eMonitor.css'],'js':['js/echarts.min.js','js/eMonitor.js']},
+		liveData:{'css':['css/liveData.css'],'js':[]},
+		analysisData:{'css':['css/analysisData.css'],'js':['js/echarts.min.js','js/analysisData.js']},
+		historicalData:{'css':['css/historicalData.css'],'js':['js/historicalData.js']},
+		cropInformation:{'css':[],'js':[]},
+
+		liveVideo:{'css':['css/liveVideo.css'],'js':['js/liveVideo.js']},
+		videoView:{'css':['css/videoView.css'],'js':['js/videoView.js']},
+		videoControl:{'css':['css/videoControl.css'],'js':['js/videoControl.js']},
+		
+		farmingActivities:{'css':['css/farmingActivities.css'],'js':['js/farmingActivities.js']},
+		pesticideUsing:{'css':['css/pesticideUsing.css'],'js':['js/pesticideUsing.js']},
+		fertilizerNotes:{'css':['css/pesticideUsing.css'],'js':['js/pesticideUsing.js']}
+	},
+	/**
+	 * [loadCss 加载css文件到头部]
+	 * @param  {[Object]} ele [要加载的css的url数组对象]
+	 */
+	loadCss:function (ele) {
+		$("link").remove(".css");
+		try{
+			for (var i = 0; i < ele.length; i++) {
+				$("head").append('<link>');
+				$("head").children(':last').attr({
+					rel:"stylesheet",
+					href:ele[i],
+					class:"css"
+				});
+			}
+		}catch(e){
+			console.error(e);
+		}
+	},
+	/**
+	 * [loadJs 加载js文件到文档底部]
+	 * @param  {[Object]} ele [要加载的js的url数组对象]
+	 */
+	loadJs:function (ele) {
+		$("script").remove(".js");
+		try{
+			for (var i = 0; i < ele.length; i++) {
+				var script = document.createElement("script");
+				script.src = ele[i];
+				script.type = "text/javascript";
+				script.className = 'js';
+				document.getElementsByTagName("body")[0].appendChild(script);
+			}
+		}catch(e){
+			console.error(e);
+		}
+	},
+	/**
+	 * [loadHtml 加载指定的]
+	 * @param  {[String]} hName [要加载的html的名称]
+	 */
+	loadHtml:function (hName) {
+		var url = hName+'.html .main-box';
+		$(".main").empty();
+		$(".main").load(url,function() {
+			loadHtmlTool.loadCss(loadHtmlTool.htmlInfoMap[hName].css);
+			loadHtmlTool.loadJs(loadHtmlTool.htmlInfoMap[hName].js);
+		});
+	}
+};
+/**
+ * 测试
+ * @return {[type]} [description]
+ */
+(function () {
+	//console.log(proveTool.regExp.username);
+	//console.log(loadHtmlTool.htmlInfoMap.analysisData.css);
+	//loadHtmlTool.loadHtml('eMonitor.html');
+})()
