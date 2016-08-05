@@ -1,0 +1,32 @@
+@charset utf-8;
+@mWidth: 100%;
+@mTitleHeight: 35px;
+@mItemTitleheight: 30px;
+@mItemborder: 1px solid #ccc;
+*{
+	margin: 0;
+	padding: 0;
+}
+/*main-inner-start*/
+.main-inner{
+	width: @mWidth;
+	height: 100%;
+	border: 3px solid #D3E3F0;
+	overflow: hidden;
+	.main-title{
+		width: 100%;
+		height: @mTitleHeight;
+		line-height: @mTitleHeight;
+		background-image: linear-gradient(#fff,#DEF1FF);
+		font-weight: bold;
+		img{
+			width:25px;
+			height: 25px;
+			margin-left: 10px;
+		}
+		span{
+			margin: 0 5px;
+		}
+	}
+}
+/*main-inner-end*/
