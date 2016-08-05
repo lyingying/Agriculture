@@ -4,7 +4,7 @@ var view_loadDateInfo = function () {
 	var date = DateTool.getCurrentYMD();
 	$(".info-box  .date").html(date.year+"年"+date.month+"月"+date.date+"日  "+DateTool.getCurrentDay());
 	//加载用户名
-	$(".userName").html();
+	$(".username").html(cookiesTool.read('userName'));
 	//TODO
 }
 

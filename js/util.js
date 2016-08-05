@@ -101,20 +101,24 @@ proveTool = {
  * @type {Object}
  */
 loadHtmlTool = {
+	/**
+	 * [htmlInfoMap html的css和js信息映射图]
+	 * @type {Object}
+	 */	
 	htmlInfoMap:{
-		eMonitor:{'css':['css/eMonitor.css'],'js':['js/echarts.min.js','js/eMonitor.js']},
-		liveData:{'css':['css/liveData.css'],'js':[]},
-		analysisData:{'css':['css/analysisData.css'],'js':['js/echarts.min.js','js/analysisData.js']},
-		historicalData:{'css':['css/historicalData.css'],'js':['js/historicalData.js']},
+		eMonitor:{'css':['./css/eMonitor.css'],'js':['./js/echarts.min.js','./js/eMonitor.js']},
+		liveData:{'css':['./css/liveData.css'],'js':[]},
+		analysisData:{'css':['./css/analysisData.css'],'js':['./js/echarts.min.js','./js/analysisData.js']},
+		historicalData:{'css':['./css/historicalData.css'],'js':['./js/historicalData.js']},
 		cropInformation:{'css':[],'js':[]},
 
-		liveVideo:{'css':['css/liveVideo.css'],'js':['js/liveVideo.js']},
-		videoView:{'css':['css/videoView.css'],'js':['js/videoView.js']},
-		videoControl:{'css':['css/videoControl.css'],'js':['js/videoControl.js']},
+		liveVideo:{'css':['./css/liveVideo.css'],'js':['./js/liveVideo.js']},
+		videoView:{'css':['./css/videoView.css'],'js':['./js/videoView.js']},
+		videoControl:{'css':['./css/videoControl.css'],'js':['./js/videoControl.js']},
 		
-		farmingActivities:{'css':['css/farmingActivities.css'],'js':['js/farmingActivities.js']},
-		pesticideUsing:{'css':['css/pesticideUsing.css'],'js':['js/pesticideUsing.js']},
-		fertilizerNotes:{'css':['css/pesticideUsing.css'],'js':['js/pesticideUsing.js']}
+		farmingActivities:{'css':['./css/farmingActivities.css'],'js':['./js/farmingActivities.js']},
+		pesticideUsing:{'css':['./css/pesticideUsing.css'],'js':['./js/pesticideUsing.js']},
+		fertilizerNotes:{'css':['./css/pesticideUsing.css'],'js':['./js/pesticideUsing.js']}
 	},
 	/**
 	 * [loadCss 加载css文件到头部]
@@ -164,6 +168,58 @@ loadHtmlTool = {
 			loadHtmlTool.loadCss(loadHtmlTool.htmlInfoMap[hName].css);
 			loadHtmlTool.loadJs(loadHtmlTool.htmlInfoMap[hName].js);
 		});
+	},
+	/**
+	 * [isLogin 判断用户是否登陆]
+	 * @return {Boolean} [是或否]
+	 */
+	isLogin:function () {
+		var loginState = cookiesTool.read('loginState');
+		return loginState == "true" ? true:false;
+	}
+};
+/**
+ * [cookiesTool cookies操作工具]
+ * @type {Object}
+ */
+cookiesTool = {
+	/**
+	 * [add 增加cookies内容]
+	 * @param {[type]} cookieStr [要增加的cookies字符串]
+	 */
+	add: function (cookieStr) {
+		document.cookie = cookieStr;
+	},
+	/**
+	 * [read 读取指定名称的cookie]
+	 * @param  {[type]} cookieName [要读取cookie名称]
+	 * @return {[type]}            [若存在该cookieName，返回该name的值，若不存在返回null]
+	 */
+	read: function (cookieName) {
+		var arr;
+		var reg=new RegExp("(^| )"+cookieName+"=([^;]*)(;|$)");
+		if(arr=document.cookie.match(reg))
+			return unescape(arr[2]);
+		else
+			return null;
+	},
+	/**
+	 * [remove 移除指定名称的cookie]
+	 * @param  {[type]} cookieName [要移除的cookie的名称]
+	 */
+	remove: function (cookieName) {
+		var date = new Date(0);
+		document.cookie = cookieName + "=a; expires=" + date.toGMTString();
+	},
+	/**
+	 * [clear 清除所有cookies]
+	 */
+	clear: function () {
+		var keys=document.cookie.match(/[^ =;]+(?=\=)/g); 
+		if (keys) { 
+			for (var i = keys.length; i--;)
+				cookiesTool.remove(keys[i]);
+		} 
 	}
 };
 /**
@@ -174,4 +230,8 @@ loadHtmlTool = {
 	//console.log(proveTool.regExp.username);
 	//console.log(loadHtmlTool.htmlInfoMap.analysisData.css);
 	//loadHtmlTool.loadHtml('eMonitor.html');
-})()
+	//cookiesTool.add('12=123456');
+	//console.log(cookiesTool.read('name'));
+	/*cookiesTool.remove('178979');
+	console.log(document.cookie);
+*/})()

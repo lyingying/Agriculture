@@ -59,7 +59,9 @@ function onLoginClick() {
 			},
 			success:function (data) {
 				if(data.errorCode == "000000"){
-					window.location.href = "main.html";
+					cookiesTool.add('userName='+$('#username').val());
+					cookiesTool.add('loginState=true');
+					window.location.href = "./main.html";
 				}else{
 					alert('errorCode:'+data.errorCode,'errorMsg:'+data.errorMsg);
 				}

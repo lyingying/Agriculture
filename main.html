@@ -15,6 +15,8 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">	
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/util.js"></script>
 </head>
 <body>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->	
@@ -32,7 +34,22 @@
 	</p>
 	<![endif]-->	
 
-	<!-- Add your site or application content here -->	
+	<!-- Add your site or application content here -->
+	<script type="text/javascript">
+		(function () {			
+			$('body').css({
+				display: 'none'
+			});
+			if (!loadHtmlTool.isLogin()) {
+				alert('您还未登陆，请前往登陆！');
+				window.location.href = './index.html';
+			}else{
+				$('body').css({
+				display: 'block'
+			});
+			}
+		})();
+	</script>	
 	<div role="container">
 		<header role="header" class="header">
 			<div class="header-box">
@@ -42,7 +59,7 @@
 						<img src='./img/clock.png'><span class="date"></span>
 					</span>
 					<span class="user">
-						<img src="./img/user2.png">	欢迎您：<span class="username">12345</span>
+						<img src="./img/user2.png">	欢迎您：<span class="username"></span>
 					</span>
 					<span class="logout">
 						<img src="./img/key.png"><a href="javascript:;">注销</a>
@@ -112,9 +129,9 @@
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 	<script src="js/plugins.js"></script>
 	<script type="text/javascript" src="./js/bootstrap-datetimepicker.min.js"></script>
-	<script type="text/javascript" src="js/util.js"></script>
 	<script type="text/javascript" src="js/view.js"></script>
 	<script type="text/javascript" Src="js/main.js"></script>
+	
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->	
 	<script>

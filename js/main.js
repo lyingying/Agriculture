@@ -4,8 +4,9 @@ $('.logout').click(function(event) {
 		type: 'POST',
 		dataType: 'json',
 		success: function (data) {
-			if(data.errorCode == "000000"){
-				window.location.href = "login.html";
+			if(data.errorCode == "000004"){
+				cookiesTool.clear();
+				window.location.href = "./index.html";
 			}else{
 				alert('errorCode:'+data.errorCode,'errorMsg:'+data.errorMsg);
 			}
