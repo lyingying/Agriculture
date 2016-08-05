@@ -35,18 +35,12 @@
 	<![endif]-->	
 
 	<!-- Add your site or application content here -->
+	<!-- 页面加载之前的处理 -->
 	<script type="text/javascript">
-		(function () {			
-			$('body').css({
-				display: 'none'
-			});
+		(function () {
 			if (!loadHtmlTool.isLogin()) {
 				alert('您还未登陆，请前往登陆！');
 				window.location.href = './index.html';
-			}else{
-				$('body').css({
-				display: 'block'
-			});
 			}
 		})();
 	</script>	

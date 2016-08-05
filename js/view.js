@@ -12,8 +12,8 @@ $(function  () {
 	view_loadDateInfo();
 });
 
-/*$("a[href='javascript:;']").click(function(event) {
+$("a[href='javascript:;']").click(function(event) {
 	var mId = $(this).attr("id");
 	console.log(mId);
 	loadHtmlTool.loadHtml(mId);
-});*/
+});
