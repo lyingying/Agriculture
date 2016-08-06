@@ -1,3 +1,6 @@
+/**
+ * [用户注销事件]
+ */
 $('.logout').click(function(event) {
 	$.ajax({
 		url: './logout.action',
@@ -5,7 +8,7 @@ $('.logout').click(function(event) {
 		dataType: 'json',
 		success: function (data) {
 			if(data.errorCode == "000004"){
-				cookiesTool.clear();
+				cookiesTool.clear();//清除cookies；
 				window.location.href = "./index.html";
 			}else{
 				alert('errorCode:'+data.errorCode,'errorMsg:'+data.errorMsg);
