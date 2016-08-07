@@ -223,6 +223,29 @@ cookiesTool = {
 	}
 };
 /**
+ * [dataTool 数据操作工具]
+ * @type {Object}
+ */
+dataTool = {
+	/**
+	 * [dataModel 温室数据模板]
+	 * @param  {[type]} dataObj [具体数据对象]
+	 * @return {[type]}         [description]
+	 */
+	dataModel: function (dataObj) {
+		ele = dataObj||{};
+		this.room = ele.room;
+		this.dataTime = ele.dataTime; 
+		this.airTemp = ele.airTemp+"℃";
+		this.airHum = ele.airHum+"%";
+		this.light = ele.light+"Klum";
+		this.co2 = ele.co2;
+		this.soilTemp = ele.soilTemp+"℃";
+		this.soilHum = ele.soilHum+"%";
+	},
+	dataName:{airTemp:"空气温度",airHum:"空气湿度",light:"光照强度",co2:"二氧化碳",soilTemp:"土壤温度",soilHum:"土壤含水量"}
+};
+/**
  * 测试
  * @return {[type]} [description]
  */
@@ -233,5 +256,10 @@ cookiesTool = {
 	//cookiesTool.add('12=123456');
 	//console.log(cookiesTool.read('name'));
 	/*cookiesTool.remove('178979');
-	console.log(document.cookie);
-*/})()
+	console.log(document.cookie);*/
+	/*var d = new dataTool.dataModel({'room':'room',"dataTime":"time"});
+	console.log(d);
+	var b = new dataTool.dataModel({'room':'room2',"dataTime":"time2"});
+	console.log(b);
+	console.log(d);*/
+})()
