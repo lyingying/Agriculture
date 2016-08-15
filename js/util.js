@@ -107,7 +107,7 @@ loadHtmlTool = {
 	 */	
 	htmlInfoMap:{
 		eMonitor:{'css':['./css/eMonitor.css'],'js':['./js/echarts.min.js','./js/eMonitor.js']},
-		liveData:{'css':['./css/liveData.css'],'js':[]},
+		liveData:{'css':['./css/liveData.css'],'js':['./liveData.js']},
 		analysisData:{'css':['./css/analysisData.css'],'js':['./js/echarts.min.js','./js/analysisData.js']},
 		historicalData:{'css':['./css/historicalData.css'],'js':['./js/historicalData.js']},
 		cropInformation:{'css':[],'js':[]},
