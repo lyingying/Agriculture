@@ -63,7 +63,7 @@ function onLoginClick() {
 					cookiesTool.add('loginState=true');
 					window.location.href = "./main.html";
 				}else{
-					alert('errorCode:'+data.errorCode+',errorMsg:'+data.errorMsg);
+					alert('errorCode:'+data.errorCode,'errorMsg:'+data.errorMsg);
 				}
 			},
 			error:function (data) {
@@ -72,9 +72,3 @@ function onLoginClick() {
 		})
 	}
 }
-
-$('body').keypress(function(event) {
-	if (event.keyCode == 13) {
-		onLoginClick();
-	}
-});
